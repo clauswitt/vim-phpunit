@@ -5,8 +5,7 @@ this plugin allows you run tests directly from vim
 INSTALL
 -------
 
-just copy 'phpunit.vim' to your '$HOME/.vim/plugins' directry
-
+Install via pathogen
 
 USAGE
 ------
