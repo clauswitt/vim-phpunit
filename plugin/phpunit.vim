@@ -35,6 +35,10 @@ if !exists('g:phpunit_testroot')
   let g:phpunit_testroot = 'tests'
 endif
 
+if !exists('g:phpunit_sourceroot')
+  let g:phpunit_sourceroot = ''
+endif
+
 "
 " you can set there subset of tests if you do not want to run
 " full set
@@ -117,12 +121,12 @@ function! PhpUnitSwitchFile()
   let is_test = expand('%:t') =~ "Test\."
   if is_test
     " remove phpunit_testroot
-    let f = substitute(f,'^'.g:phpunit_testroot.'/','','')
+    let f = substitute(f,'^'.g:phpunit_testroot.'/',g:phpunit_sourceroot.'/','')
     " remove 'Test.' from filename
     let f = substitute(f,'Test\.','.','')
     let cmd = 'to '
   else
-    let f = g:phpunit_testroot . "/" . expand('%:r') . "Test.php"
+    let f = g:phpunit_testroot . "/" . substitute(expand('%:r'), '^'.g:phpunit_sourceroot.'/', '', '') . "Test.php"
     let cmd = 'bo '
   endif
   " is there window with complent file open?
