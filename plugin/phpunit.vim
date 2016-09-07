@@ -175,9 +175,3 @@ endfunction
 command! -nargs=? -complete=file PhpUnit call PhpUnitRun(<q-args>)
 command! PhpUnitFile call PhpUnitRunEditedFile()
 command! PhpUnitSwitchFile call PhpUnitSwitchFile()
-
-if !exists('g:phpunit_key_map') || !g:phpunit_key_map
-    nnoremap <Leader>tt :PhpUnit<Enter>
-    nnoremap <Leader>tf :PhpUnitFile<Enter>
-    nnoremap <Leader>ts :PhpUnitSwitchFile<Enter>
-endif
